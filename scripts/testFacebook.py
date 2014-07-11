@@ -5,11 +5,11 @@ from pymongo import MongoClient
 
 base_url = 'https://graph.facebook.com/me'
 
-<<<<<<< HEAD
+
 ACCESS_TOKEN=''+sys.argv[2]
-=======
-ACCESS_TOKEN = ''
->>>>>>> b64aec40c3f92647d2760d3e93354bcbeaabcc29
+
+
+
 
 # Get 10 likes for 10 friends
 fields = ''+sys.argv[1]
@@ -32,7 +32,8 @@ content = requests.get(url).json()
 # Pretty-print the JSON and display it
 # print json.dumps(content,indent=1)
 
+
 client = MongoClient('localhost',27017)
 db = client.pda
-tab = db.ameya
+tab = db.user
 tab.insert(content)
