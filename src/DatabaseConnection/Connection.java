@@ -12,10 +12,13 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 public class Connection {
 
 
+	
+
 	public String authenticate(String email,String password ){
 		try {
+			
 			MongoClient mongo = new MongoClient("localhost",27017);
-
+			
 			DB db = mongo.getDB("PDA");
 			DBCollection user = db.getCollection("User");
 
@@ -24,10 +27,10 @@ public class Connection {
 			obj.add(new BasicDBObject("email", email));
 			obj.add(new BasicDBObject("password", password));
 			andQuery.put("$and", obj);
-
-			//System.out.println(andQuery.toString());
+			
 
 			DBCursor cursor = user.find(andQuery);
+			mongo.close();
 			if (cursor.size() == 1 )
 				return "success";
 
@@ -36,7 +39,41 @@ public class Connection {
 		catch(Exception e){
 			System.out.println(e.getMessage());
 		}
-
+		
+		
 		return "error";
 	}
+	
+	public ArrayList<String> getFriends() {
+		
+		ArrayList<String> friends = new ArrayList<String>();
+		try {
+		
+			MongoClient mongo = new MongoClient("localhost",27017);
+
+			DB db = mongo.getDB("PDA");
+			DBCollection coll = db.getCollection("FB");
+			
+			DBCursor cursor = coll.find();
+			try {
+			   while(cursor.hasNext()) {
+			       friends.add(cursor.next().toString());
+			   }
+			} finally {
+			   cursor.close();
+			}
+			
+
+		}
+		catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+
+		return friends;
+		
+	}
+
+
 }
+
+
