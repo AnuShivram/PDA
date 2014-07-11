@@ -5,7 +5,11 @@ from pymongo import MongoClient
 
 base_url = 'https://graph.facebook.com/me'
 
+<<<<<<< HEAD
 ACCESS_TOKEN=''+sys.argv[2]
+=======
+ACCESS_TOKEN = ''
+>>>>>>> b64aec40c3f92647d2760d3e93354bcbeaabcc29
 
 # Get 10 likes for 10 friends
 fields = ''+sys.argv[1]
