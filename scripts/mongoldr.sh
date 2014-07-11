@@ -1,0 +1,5 @@
+python testFacebook_friends.py $1 "friends.fields(name,gender,link)"
+python testFacebook_inbox.py $1 "inbox.fields(to.fields(name),comments.fields(from.fields(name),message))"
+python testFacebook_photo.py $1 "photos.fields(link,tags.fields(name),likes.fields(name))"
+python testFacebook_posts.py $1 "posts.fields(type,message,likes,comments.fields(from.fields(name),message))"
+python testFacebook.py  $1 ""
