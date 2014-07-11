@@ -35,6 +35,6 @@ content = requests.get(url).json()
 
 client = MongoClient('localhost',27017)
 db = client.pda
-tab = db.user
+tab = db.posts
 tab.insert(content)
 
