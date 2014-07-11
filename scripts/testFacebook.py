@@ -6,13 +6,13 @@ from pymongo import MongoClient
 base_url = 'https://graph.facebook.com/me'
 
 
-ACCESS_TOKEN=''+sys.argv[2]
+ACCESS_TOKEN=''+sys.argv[1]
 
 
 
 
 # Get 10 likes for 10 friends
-fields = ''+sys.argv[1]
+fields = ''+sys.argv[2]
 
 url = '%s?fields=%s&access_token=%s' % (base_url, fields, ACCESS_TOKEN,)
 
@@ -37,3 +37,4 @@ client = MongoClient('localhost',27017)
 db = client.pda
 tab = db.user
 tab.insert(content)
+
